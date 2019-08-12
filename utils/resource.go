@@ -16,7 +16,7 @@ func GetResourceName(req *http.Request, params map[string]string) string {
 	}
 	// Get resource name
 	resource := req.URL.EscapedPath()
-	for key, value := range params {
+	for value, key := range params {
 		resource = strings.Replace(resource, value, key, 1)
 	}
 	resource = strings.Replace(resource, "/", "_", -1)

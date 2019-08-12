@@ -14,8 +14,9 @@ func TestGetResourceName(t *testing.T) {
 		params map[string]string
 		want   string
 	}{
+		{"empty request", nil, map[string]string{}, ""},
 		{"get without parameters", createRequest(http.MethodGet, "/without/parameters"), map[string]string{}, "GET__without_parameters"},
-		{"post with parameters", createRequest(http.MethodGet, "/with/1234/parameters/6395"), map[string]string{"param1": "1234", "param2": "6395"}, "GET__with_param1_parameters_param2"},
+		{"post with parameters", createRequest(http.MethodGet, "/with/1234/parameters/6395"), map[string]string{"1234": "param1", "6395": "param2"}, "GET__with_param1_parameters_param2"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
