@@ -11,7 +11,7 @@ import (
 
 // Inject typed functions can be used to inject
 // implementation specific changes to span
-type Inject func(context.Context, *opentracing.Span) context.Context
+type Inject func(context.Context, opentracing.Span) context.Context
 
 // RequestTracer implements gin middleware to trace requests
 // using opentracing
@@ -46,7 +46,7 @@ func RequestTracer(inject Inject) gin.HandlerFunc {
 
 				ext.HTTPStatusCode.Set(serverSpan, uint16(c.Writer.Status()))
 				if len(c.Errors) > 0 {
-					serverSpan.SetTag("server.errors", c.Errors.String())
+					serverSpan.SetTag("server.errors", c.Errors[0].Error())
 					ext.Error.Set(serverSpan, true)
 				}
 			}()
@@ -61,7 +61,7 @@ func RequestTracer(inject Inject) gin.HandlerFunc {
 
 			// Inject specific handling to spans
 			if inject != nil {
-				ctx = inject(ctx, &serverSpan)
+				ctx = inject(ctx, serverSpan)
 			}
 
 			req = req.WithContext(ctx)
