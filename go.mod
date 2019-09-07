@@ -3,7 +3,6 @@ module github.com/foodiefm/opentracing
 go 1.12
 
 require (
-	bitbucket.org/digitalfoodie/go-logging v0.4.1 // indirect
 	github.com/gin-gonic/gin v1.4.0
 	github.com/labstack/echo/v4 v4.1.8
 	github.com/opentracing/opentracing-go v1.1.0
