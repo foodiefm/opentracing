@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/foodiefm/opentracing.svg?branch=master)](https://travis-ci.com/foodiefm/opentracing)
 # OpenTracing extensions for Go
 
 This package implements extensions to OpenTracing.
