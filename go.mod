@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/gin-gonic/gin v1.4.0
+	github.com/go-pg/pg/v9 v9.0.3
 	github.com/labstack/echo/v4 v4.1.8
 	github.com/opentracing/opentracing-go v1.1.0
 	github.com/philhofer/fwd v1.0.0 // indirect
